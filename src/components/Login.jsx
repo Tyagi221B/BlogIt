@@ -20,6 +20,7 @@ function Login() {
                 const userData = await authService.getCurrentUser()
                 if(userData) dispatch(authLogin(userData));
                 navigate("/")
+                // yha agar link use karte to usepar click karna padta hai , navigate use kar ke hum se programmatically us se kaam karva sakte hai
             }
         } catch (error) {
             setError(error.message)

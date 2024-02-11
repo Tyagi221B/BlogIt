@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import {Container, PostForm} from '../components'
 import appwriteService from "../appwrite/config";
 import { useNavigate,  useParams } from 'react-router-dom';
@@ -23,6 +23,7 @@ function EditPost() {
     <div className='py-8'>
         <Container>
             <PostForm post={post} />
+            {/* {console.log(post)} */}
         </Container>
     </div>
   ) : null

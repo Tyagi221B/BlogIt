@@ -16,8 +16,11 @@ function Signup() {
         setError("")
         try {
             const userData = await authService.createAccount(data)
+                // console.log(userData)
             if (userData) {
                 const userData = await authService.getCurrentUser()
+                // console.log(userData)
+
                 if(userData) dispatch(login(userData));
                 navigate("/")
             }
