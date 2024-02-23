@@ -43,16 +43,15 @@ function Home() {
   }
 
   return (
-    <div className="w-full py-8">
-      <Container>
-        <div className="flex flex-wrap ">
+    <div className="w-full py-8 bg-gray-900 flex justify-center">
+      
+        <div className="flex flex-wrap justify-center border-2 border-black w-1/2 bg-gray-900 shadow-blue-900 shadow-md rounded-2xl ">
           {posts.map((post) => (
-            <div key={post.$id} className="p-2 w-full">
+            <div key={post.$id} className="p-2 w-full flex flex-wrap justify-center hover:scale-150 hover:mb-10 hover:mt-20">
               <PostCard {...post} />
             </div>
           ))}
         </div>
-      </Container>
     </div>
   );
 }

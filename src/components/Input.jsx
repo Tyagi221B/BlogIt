@@ -8,7 +8,7 @@ const Input = React.forwardRef( function Input({
 }, ref){
     const id = useId()
     return (
-        <div className='w-full'>
+        <div className='w-full '>
             {label && <label 
             className='inline-block mb-1 pl-1' 
             htmlFor={id}>
@@ -17,7 +17,7 @@ const Input = React.forwardRef( function Input({
             }
             <input
             type={type}
-            className={`px-3 py-2 rounded-lg bg-white text-black outline-none focus:bg-gray-50 duration-200 border border-gray-200 w-full ${className}`}
+            className={`px-3 py-2 rounded-lg bg-slate-100 text-black outline-none  focus:text-black focus:bg-gray-50 duration-200 border focus:outline-blue-800 focus:outline-2 border-gray-200 w-full ${className}`}
             ref={ref}
             {...props}
             id={id}

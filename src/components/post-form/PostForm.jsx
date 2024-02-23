@@ -24,8 +24,8 @@ export default function PostForm({ post }) {
       const file = data.image[0]
         ? await appwriteService.uploadFile(data.image[0])
         : null;
-      if (file) {
         // agar meri file upload ho gayi hai to aab me file ke liye check karunga
+      if (file) {
         appwriteService.deleteFile(post.featuredImage);
       }
 
@@ -82,13 +82,13 @@ export default function PostForm({ post }) {
         <Input
           label="Title :"
           placeholder="Title"
-          className="mb-4"
+          className="mb-4 bg-slate-200 text-black"
           {...register("title", { required: true })}
         />
         <Input
           label="Slug :"
           placeholder="Slug"
-          className="mb-4"
+          className="mb-4  bg-slate-200 text-black"
           {...register("slug", { required: true })}
           onInput={(e) => {
             setValue("slug", slugTransform(e.currentTarget.value), {
@@ -107,12 +107,12 @@ export default function PostForm({ post }) {
         <Input
           label="Featured Image :"
           type="file"
-          className="mb-4"
+          className="mb-4  bg-slate-200 text-black"
           accept="image/png, image/jpg, image/jpeg, image/gif"
           {...register("image", { required: !post })}
         />
         {post && (
-          <div className="w-full mb-4">
+          <div className="w-full mb-4  bg-slate-200 text-black">
             <img
               src={appwriteService.getFilePreview(post.featuredImage)}
               alt={post.title}
@@ -123,13 +123,13 @@ export default function PostForm({ post }) {
         <Select
           options={["active", "inactive"]}
           label="Status"
-          className="mb-4"
+          className="mb-4  bg-slate-200 text-black"
           {...register("status", { required: true })}
         />
         <Button
           type="submit"
           bgColor={post ? "bg-green-500" : undefined}
-          className="w-full"
+          className="w-full "
         >
           {post ? "Update" : "Submit"}
         </Button>

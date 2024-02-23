@@ -11,11 +11,11 @@ function AllPosts() {
         }
     })
   return (
-    <div className='w-full py-8'>
+    <div className='w-full py-8 bg-gray-900'>
         <Container>
             <div className='flex flex-wrap'>
                 {posts.map((post) => (
-                    <div key={post.$id} className='p-2 w-1/4'>
+                    <div key={post.$id} className='p-2 w-1/4 hover:scale-105 hover:bg-slate-700 hover:rounded-2xl'>
                         <PostCard {...post} />
                     </div>
                 ))}
