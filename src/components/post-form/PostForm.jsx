@@ -130,6 +130,7 @@ export default function PostForm({ post }) {
           type="submit"
           bgColor={post ? "bg-green-500" : undefined}
           className="w-full "
+          disabled={!userData?.$id}
         >
           {post ? "Update" : "Submit"}
         </Button>
