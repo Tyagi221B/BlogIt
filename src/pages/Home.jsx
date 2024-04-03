@@ -3,13 +3,13 @@ import appwriteService from '../appwrite/config';
 import { Container, PostCard } from '../components';
 
 // Function to shuffle array elements (Fisher-Yates shuffle algorithm)
-// function shuffleArray(array) {
-//   for (let i = array.length - 1; i > 0; i--) {
-//     const j = Math.floor(Math.random() * (i + 1));
-//     [array[i], array[j]] = [array[j], array[i]];
-//   }
-//   return array;
-// }
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
 
 function Home() {
   const [posts, setPosts] = useState([]);
@@ -18,9 +18,8 @@ function Home() {
     appwriteService.getPosts().then((posts) => {
       if (posts) {
         // Shuffle the posts array
-        // const shuffledPosts = shuffleArray(posts.documents);
-        // Set the shuffled array as state
-        // setPosts(shuffledPosts);
+        const shuffledPosts = shuffleArray(posts.documents);
+        setPosts(shuffledPosts);
         setPosts(posts.documents);
       }
     });
@@ -47,7 +46,7 @@ function Home() {
       
         <div className="flex flex-wrap justify-center border-2 border-black w-1/2 bg-gray-900 shadow-blue-900 shadow-md rounded-2xl ">
           {posts.map((post) => (
-            <div key={post.$id} className="p-2 w-full flex flex-wrap justify-center hover:scale-150 hover:mb-10 hover:mt-20">
+            <div key={post.$id} className="p-2 w-full flex flex-wrap justify-center transition-all hover:scale-150 hover:mb-10 hover:mt-20">
               <PostCard {...post} />
             </div>
           ))}
