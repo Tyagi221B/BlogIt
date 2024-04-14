@@ -1,24 +1,29 @@
-import appwriteService from "../appwrite/config"
-import {Link} from 'react-router-dom'
+import appwriteService from '../appwrite/config'
+import { Link } from 'react-router-dom'
 
-function PostCard({$id, title, featuredImage}) {
-    
-  return (
-    <Link to={`/post/${$id}`}>
-        <div className='w-full bg-gray-800 text-white shadow-sm shadow-white rounded-xl p-4 mb-6'>
-            <div className='w-full flex justify-center mb-4'>
-                <img src={appwriteService.getFilePreview(featuredImage)} alt={title}
-                className='rounded-xl h-56 ' />
+function PostCard({post}) {
+    const date = new Date(post.$createdAt).toLocaleDateString('en-US')
+
+    return (
+        <Link to={`/post/${post.$id}`}>
+            <div className="max-w-md shadow-xl rounded-xl overflow-hidden flex flex-col justify-between">
+                <div className='h-96 overflow-scroll'>
+                <img 
+                    className="w-full h-auto" 
+                    src={appwriteService.getFilePreview(post.featuredImage)} 
+                    alt={post.title} 
+                />
+                </div>
+
+                <div className="sm:px-6 px-2 py-4 flex flex-wrap justify-between items-center">
+                    <div className="font-bold text-xl mb-2">{post.title}</div>
+                    <p className="text-sm">{date}</p>
+                </div>
+
 
             </div>
-            <div className="flex justify-center">
-            <h2
-            className='text-xl font-bold'
-            >{title}</h2></div>
-        </div>
-    </Link>
-  )
+        </Link>
+    )
 }
-
 
 export default PostCard
